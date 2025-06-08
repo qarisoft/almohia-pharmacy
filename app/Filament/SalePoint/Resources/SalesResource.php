@@ -163,11 +163,15 @@ class SalesResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id'),
-                Tables\Columns\TextColumn::make('end_price')
-            ])->defaultSort('id','desc')
+                Tables\Columns\TextColumn::make('end_price'),
+                Tables\Columns\TextColumn::make('created_at'),
+                Tables\Columns\TextColumn::make('updated_at'),
+            ])
+//            ->defaultSort('id','desc')
             ->filters([
-                Tables\Filters\Filter::make('today')->default()
-                    ->query(fn (Builder $query): Builder => $query->where('created_at','>', today()->toDateString())),
+//                Tables\Filters\Filter::make('today')
+//                    ->default()
+//                    ->query(fn (Builder $query): Builder => $query->where('created_at','>', today()->toDateString())),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

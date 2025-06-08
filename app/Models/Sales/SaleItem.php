@@ -2,6 +2,7 @@
 
 namespace App\Models\Sales;
 
+use App\Models\Products\MeasureUnit;
 use App\Models\Products\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -30,5 +31,10 @@ class SaleItem extends Model
         return   $this->belongsTo(Product::class);
     }
 
+
+    public function unit(): BelongsTo
+    {
+        return $this->belongsTo(MeasureUnit::class,'unit_id');
+    }
 
 }
