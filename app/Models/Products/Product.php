@@ -1,0 +1,102 @@
+<?php
+
+namespace App\Models\Products;
+
+use App\Blamable;
+use App\Models\Activities\CreatedBy;
+use App\Models\Sales\SaleItem;
+use App\Models\Store\ProductInput;
+use App\Models\User;
+use App\Models\Products\Company;
+use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+
+class Product extends Model
+{
+    /** @use HasFactory<\Database\Factories\Products\ProductFactory> */
+    use HasFactory, Blamable;
+
+
+    protected $fillable = [
+        'name_ar',
+        'name_en',
+        'sell_price',
+        'barcode',
+        'unit_price'
+    ];
+
+    static function search(string $search): array
+    {
+        return Product::query()
+            ->where('barcode', 'like', "%{$search}%")
+            ->orWhere('name_ar', 'like', "%{$search}%")
+            ->orWhere('name_en', 'like', "%{$search}%")
+            ->orWhere('scientific_name', 'like', "%{$search}%")
+            ->limit(50)
+            ->pluck('name_ar', 'id')
+            ->toArray();
+    }
+
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
+
+    public function price(): HasOne
+    {
+        return $this->hasOne(Price::class);
+    }
+
+    public function storeItems(): HasMany
+    {
+        return $this->hasMany(ProductInput::class);
+    }
+
+    public function inStore(): int
+    {
+        return $this->inputItemsCount() - $this->soldItemsCount();
+    }
+
+    public function inputItemsCount()
+    {
+        return $this->hasMany(ProductInput::class)->sum('quantity');
+    }
+
+    public function soldItemsCount()
+    {
+        return $this->hasMany(SaleItem::class)->sum('quantity');
+    }
+
+    public function sales(): HasMany
+    {
+        return $this->hasMany(SaleItem::class);
+    }
+
+
+    public function createdBy(): MorphOne
+    {
+        return $this->morphOne(CreatedBy::class, 'created_by');
+    }
+
+    public function units(): HasMany
+    {
+        return $this->hasMany(MeasureUnit::class);
+    }
+
+
+    protected static function booted(): void
+    {
+        static::created(function (Product $product) {
+            $product->units()->create([
+                'count' => 1,
+                'name' => str_contains($product->name_ar, 'شراب') ? 'زجاجة' : 'default'
+            ]);
+        });
+    }
+}

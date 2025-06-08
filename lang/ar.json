@@ -1,0 +1,22 @@
+{
+    "Sales": "المبيعات",
+    "items": "الاصناف",
+    "product": "الصنف",
+    "products": "الاصناف",
+    "quantity": "الكمية",
+    "end_price": "السعر النهائي",
+    "expire_date": "تاريخ الانتهاء",
+    "price": "السعر",
+    "in_store": "المخزون",
+    "name_ar": "الاسم بالعربي",
+    "name_en": "الأسم الانجليزي",
+    "name": "الأسم",
+    "scientific_name": "الأسم العلمي",
+    "company": "الشركة",
+    "total_price": "السعر النهائي",
+    "bill_number": "رقم الفاتورة",
+    "count": "العدد",
+    "no_price": "غير مسعر",
+    "withPrice": "مسعر"
+
+}
