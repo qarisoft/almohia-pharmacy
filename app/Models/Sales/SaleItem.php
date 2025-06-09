@@ -12,13 +12,14 @@ class SaleItem extends Model
 {
     /** @use HasFactory<\Database\Factories\Sales\SaleItemFactory> */
     use HasFactory;
-    protected $fillable=[
-        'product_id',
-        'header_id',
-        'quantity',
-        'end_price',
-        'product_price',
-    ];
+    protected $guarded=[];
+//    protected $fillable=[
+//        'product_id',
+//        'header_id',
+//        'quantity',
+//        'end_price',
+//        'product_price',
+//    ];
 
 
     public function header(): BelongsTo

@@ -10,6 +10,6 @@ class CreateSales extends CreateRecord
 {
     protected static string $resource = SalesResource::class;
 
-
+    
 
 }

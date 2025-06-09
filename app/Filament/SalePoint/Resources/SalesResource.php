@@ -105,7 +105,7 @@ class SalesResource extends Resource
                         TextInput::make('quantity')
                             ->label(__('quantity'))
                             ->numeric()
-                            ->live(onBlur: true)
+                            ->live(debounce: 500)
                             ->required()
                             ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
                                 $type_count = $get('type');
@@ -137,7 +137,7 @@ class SalesResource extends Resource
                     TextInput::make('discount')
                         ->label(__('discount'))
                         ->numeric()
-                        ->live(onBlur: true)
+                        ->live(onBlur: true,debounce: 1000)
                         ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
                             $items = $get('items');
                             $price = 0;
@@ -167,20 +167,21 @@ class SalesResource extends Resource
                 Tables\Columns\TextColumn::make('created_at'),
                 Tables\Columns\TextColumn::make('updated_at'),
             ])
-//            ->defaultSort('id','desc')
+            ->defaultSort('id','desc')
             ->filters([
-//                Tables\Filters\Filter::make('today')
-//                    ->default()
-//                    ->query(fn (Builder $query): Builder => $query->where('created_at','>', today()->toDateString())),
+                Tables\Filters\Filter::make('today')
+                    ->default()
+                    ->query(fn (Builder $query): Builder => $query->where('created_at','>', today()->toDateString())),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])->persistFiltersInSession();
     }
 
     public static function getRelations(): array
@@ -195,7 +196,8 @@ class SalesResource extends Resource
         return [
             'index' => Pages\ListSales::route('/'),
             'create' => Pages\CreateSales::route('/create'),
-            'edit' => Pages\EditSales::route('/{record}/edit'),
+            'view' => Pages\ViewSales::route('/{record}'),
+//            'edit' => Pages\EditSales::route('/{record}/edit'),
         ];
     }
 }
