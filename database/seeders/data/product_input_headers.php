@@ -2,7 +2,7 @@
 <?php
 
 return [
-['id'=>1,'total_price'=>537408,'bill_number'=>670382,'vendor_id'=>null,'created_at'=>'2025-06-07 08:21:15','updated_at'=>'2025-06-10 08:57:10',],
+['id'=>1,'total_price'=>397008,'bill_number'=>670382,'vendor_id'=>null,'created_at'=>'2025-06-07 08:21:15','updated_at'=>'2025-06-10 10:40:52',],
 ['id'=>2,'total_price'=>524245,'bill_number'=>670349,'vendor_id'=>null,'created_at'=>'2025-06-07 08:21:15','updated_at'=>'2025-06-10 08:57:11',],
 ['id'=>3,'total_price'=>120700,'bill_number'=>1525,'vendor_id'=>null,'created_at'=>'2025-06-07 08:21:15','updated_at'=>'2025-06-10 08:57:11',],
 ['id'=>4,'total_price'=>94300,'bill_number'=>1526,'vendor_id'=>null,'created_at'=>'2025-06-07 08:21:15','updated_at'=>'2025-06-10 08:57:11',],

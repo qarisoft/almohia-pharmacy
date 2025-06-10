@@ -401,5 +401,6 @@ return [
 ['id'=>404,'name'=>'باكت','product_id'=>304,'discount'=>0,'count'=>100,'created_at'=>'2025-06-10 09:45:35','updated_at'=>'2025-06-10 09:45:35',],
 ['id'=>405,'name'=>'حبة','product_id'=>305,'discount'=>0,'count'=>1,'created_at'=>'2025-06-10 09:51:44','updated_at'=>'2025-06-10 09:51:44',],
 ['id'=>406,'name'=>'باكت','product_id'=>305,'discount'=>0,'count'=>100,'created_at'=>'2025-06-10 09:51:59','updated_at'=>'2025-06-10 09:51:59',],
+['id'=>407,'name'=>'باكت','product_id'=>293,'discount'=>0,'count'=>5,'created_at'=>'2025-06-10 10:41:18','updated_at'=>'2025-06-10 10:41:18',],
 
 ];

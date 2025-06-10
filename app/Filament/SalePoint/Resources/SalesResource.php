@@ -55,7 +55,6 @@ class SalesResource extends Resource
                                 if ($unit) {
                                     $p_price = $unit->sellPrice() * $quantity;
                                     $price += $p_price;
-
                                 }
                             }
                         }
@@ -68,10 +67,10 @@ class SalesResource extends Resource
                             ->options(fn() => Product::query()->where('unit_price', '>', 0)->pluck('name_ar', 'id'))
                             ->live()
                             ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
-                                $set('end_price', null);
-                                $p=Product::query()->find($state);
-//                                if ($p->units()->count())
-                                $set('unit_id', $p->units()->first()->id);
+//                                $p=Product::query()->find($state);
+//                                $set('unit_id', $p->units()->first()->id);
+//                                $set('end_price', 0);
+//                                $set('cost_price', );
                             })
                             ->required()
                             ->autofocus(fn($operation) => $operation == 'create')
@@ -83,7 +82,7 @@ class SalesResource extends Resource
                             ->label(__('unit'))
                             ->required()
                             ->live()
-                            ->native(false)
+//                            ->native(false)
                             ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
                                 $q = intval($get('quantity')) ?? 1;
                                 $unit = MeasureUnit::find($state);
