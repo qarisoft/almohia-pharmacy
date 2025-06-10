@@ -13,6 +13,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -47,7 +48,9 @@ class ProductInputHeaderResource extends Resource
             ->columns([
                 TextColumn::make('bill_number')
                     ->label(__('bill_number')),
-                TextColumn::make('cost')->state(fn($record)=>$record->totalCost())->money(locale: 'en')
+                TextColumn::make('total_price')
+                    ->summarize(Sum::make('Sum'))
+                    ->money(locale: 'en')
             ])
             ->filters([
                 //

@@ -20,17 +20,17 @@ class ProductInput extends Model
 //    ];
 
 
-    protected $guarded=[];
+    protected $guarded = [];
 
 
     public function product(): BelongsTo
     {
-        return  $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class);
     }
 
     public function vendor(): BelongsTo
     {
-        return  $this->belongsTo(Vendor::class);
+        return $this->belongsTo(Vendor::class);
     }
 
     public function header(): BelongsTo
@@ -42,6 +42,7 @@ class ProductInput extends Model
     {
         return $this->belongsTo(MeasureUnit::class, 'unit_id');
     }
+
     protected static function booted(): void
     {
         static::updated(function ($input) {
@@ -50,11 +51,10 @@ class ProductInput extends Model
         static::created(function ($input) {
             $input->header->updateTotalPrice();
         });
-        static ::saving(function ($header) {
-            $header->total_cost_price=$header->unit_cost_price*$header->quantity;
+        static::saving(function ($header) {
+            $header->total_cost_price = $header->unit_cost_price * $header->quantity;
         });
     }
-
 
 
 }

@@ -57,7 +57,7 @@ class ProductResource extends Resource
                 TextColumn::make('id'),
                 TextColumn::make('name_ar')->searchable()
                     ->label(__('name_ar')),
-                TextColumn::make('lastStoreItem.unit_cost_price'),
+                TextColumn::make('lastStoreItem.unit_cost_price')->label(__('cost_price')),
                 TextColumn::make('unit_price'),
                 TextColumn::make('inputs')
                     ->label(__('in_store'))

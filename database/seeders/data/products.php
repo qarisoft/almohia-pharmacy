@@ -66,7 +66,7 @@ return [
 ['id'=>62,'unit_price'=>0,'barcode'=>'','name_ar'=>'كريم جليسوليد صغير مع الاضافة','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-07 08:21:13',],
 ['id'=>63,'unit_price'=>0,'barcode'=>'','name_ar'=>'لصقة عمليات 55 عبوة 50 سران','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-07 08:21:13',],
 ['id'=>64,'unit_price'=>0,'barcode'=>'','name_ar'=>'لصق عمليات 2010 عبوه 25','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-07 08:21:13',],
-['id'=>65,'unit_price'=>0,'barcode'=>'','name_ar'=>'لصق عمليات تايجر 2510','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-07 08:21:13',],
+['id'=>65,'unit_price'=>0,'barcode'=>'','name_ar'=>'لصق عمليات تايجر 25x10','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-10 11:21:14',],
 ['id'=>66,'unit_price'=>0,'barcode'=>'','name_ar'=>'غذاء ريرى بدون مرتجع','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-07 08:21:13',],
 ['id'=>67,'unit_price'=>1500,'barcode'=>'9501101272248','name_ar'=>'اوجمين شراب ۲۲۸ ملجم الدوانية الحديثة','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-07 08:21:13',],
 ['id'=>68,'unit_price'=>1100,'barcode'=>'9501101270138','name_ar'=>'موكسالين ٢٥٠ ملجم شراب الدوائية الحديثة','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-07 08:21:13',],

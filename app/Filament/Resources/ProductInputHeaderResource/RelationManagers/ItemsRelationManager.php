@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\ProductInputHeaderResource\RelationManagers;
 
 use App\Models\Products\Product;
+use App\Models\Store\ProductInput;
 use App\PaymentType;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
@@ -13,6 +14,7 @@ use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -69,8 +71,9 @@ class ItemsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('expire_date'),
                 Tables\Columns\TextColumn::make('payment_type'),
                 Tables\Columns\TextColumn::make('unit_cost_price'),
+                Tables\Columns\TextColumn::make('product.unit_price'),
                 Tables\Columns\TextColumn::make('quantity'),
-                Tables\Columns\TextColumn::make('total_cost_price'),
+                Tables\Columns\TextColumn::make('total_cost_price')->money(locale: 'en'),
             ])
             ->filters([
                 //
@@ -81,6 +84,9 @@ class ItemsRelationManager extends RelationManager
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Action::make('edit-product')
+                    ->url(fn (ProductInput $record): string => route('filament.admin.resources.products.edit', $record->product))
+                    ->openUrlInNewTab()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

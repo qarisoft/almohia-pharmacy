@@ -82,7 +82,7 @@ class SalesResource extends Resource
                             ->label(__('unit'))
                             ->required()
                             ->live()
-//                            ->native(false)
+                            ->native(false)
                             ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
                                 $q = intval($get('quantity')) ?? 1;
                                 $unit = MeasureUnit::find($state);

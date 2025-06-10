@@ -11,6 +11,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -40,7 +41,7 @@ class SaleItemResource extends Resource
                 TextColumn::make('quantity'),
                 TextColumn::make('end_price')->label('sell')->summarize(Tables\Columns\Summarizers\Sum::make('Sum')),
                 TextColumn::make('cost')->state(fn(SaleItem $record)=>$record->costPrice()),
-                TextColumn::make('profit')->summarize(Tables\Columns\Summarizers\Sum::make('Sum')),
+                TextColumn::make('profit')->summarize(Sum::make('Sum')),
             ])
             ->filters([
                 //
