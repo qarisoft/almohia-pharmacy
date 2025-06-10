@@ -298,5 +298,11 @@ return [
 ['id'=>294,'quantity'=>5,'product_id'=>300,'header_id'=>11,'vendor_id'=>null,'payment_type'=>'cash','total_cost_price'=>600000,'unit_cost_price'=>120000,'expire_date'=>'','unit_id'=>375,'created_at'=>'2025-06-10 05:31:33','updated_at'=>'2025-06-10 07:04:42',],
 ['id'=>295,'quantity'=>3,'product_id'=>290,'header_id'=>12,'vendor_id'=>null,'payment_type'=>'cash','total_cost_price'=>10500,'unit_cost_price'=>3500,'expire_date'=>'2027-06-01','unit_id'=>319,'created_at'=>'2025-06-10 05:32:41','updated_at'=>'2025-06-10 05:32:48',],
 ['id'=>296,'quantity'=>10,'product_id'=>192,'header_id'=>12,'vendor_id'=>null,'payment_type'=>'cash','total_cost_price'=>2800,'unit_cost_price'=>280,'expire_date'=>'','unit_id'=>192,'created_at'=>'2025-06-10 05:34:11','updated_at'=>'2025-06-10 05:34:21',],
+['id'=>297,'quantity'=>5,'product_id'=>222,'header_id'=>13,'vendor_id'=>null,'payment_type'=>'cash','total_cost_price'=>30000,'unit_cost_price'=>6000,'expire_date'=>'','unit_id'=>222,'created_at'=>'2025-06-10 09:33:24','updated_at'=>'2025-06-10 09:33:29',],
+['id'=>298,'quantity'=>2,'product_id'=>301,'header_id'=>13,'vendor_id'=>null,'payment_type'=>'cash','total_cost_price'=>20000,'unit_cost_price'=>10000,'expire_date'=>'','unit_id'=>398,'created_at'=>'2025-06-10 09:34:54','updated_at'=>'2025-06-10 09:35:23',],
+['id'=>299,'quantity'=>2,'product_id'=>302,'header_id'=>13,'vendor_id'=>null,'payment_type'=>'cash','total_cost_price'=>800,'unit_cost_price'=>400,'expire_date'=>'','unit_id'=>400,'created_at'=>'2025-06-10 09:38:00','updated_at'=>'2025-06-10 09:38:08',],
+['id'=>300,'quantity'=>5,'product_id'=>255,'header_id'=>13,'vendor_id'=>null,'payment_type'=>'cash','total_cost_price'=>7500,'unit_cost_price'=>1500,'expire_date'=>'','unit_id'=>377,'created_at'=>'2025-06-10 09:42:49','updated_at'=>'2025-06-10 09:43:00',],
+['id'=>301,'quantity'=>1,'product_id'=>304,'header_id'=>13,'vendor_id'=>null,'payment_type'=>'cash','total_cost_price'=>2400,'unit_cost_price'=>2400,'expire_date'=>'','unit_id'=>404,'created_at'=>'2025-06-10 09:50:34','updated_at'=>'2025-06-10 09:50:41',],
+['id'=>302,'quantity'=>1,'product_id'=>305,'header_id'=>13,'vendor_id'=>null,'payment_type'=>'cash','total_cost_price'=>2400,'unit_cost_price'=>2400,'expire_date'=>'','unit_id'=>406,'created_at'=>'2025-06-10 09:52:23','updated_at'=>'2025-06-10 09:52:30',],
 
 ];

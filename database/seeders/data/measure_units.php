@@ -392,5 +392,14 @@ return [
 ['id'=>395,'name'=>'باكت','product_id'=>261,'discount'=>0,'count'=>50,'created_at'=>'2025-06-10 07:26:20','updated_at'=>'2025-06-10 07:26:20',],
 ['id'=>396,'name'=>'باكت','product_id'=>262,'discount'=>0,'count'=>50,'created_at'=>'2025-06-10 07:26:39','updated_at'=>'2025-06-10 07:26:39',],
 ['id'=>397,'name'=>'باكت','product_id'=>270,'discount'=>0,'count'=>50,'created_at'=>'2025-06-10 07:27:06','updated_at'=>'2025-06-10 07:27:06',],
+['id'=>398,'name'=>'حبة','product_id'=>301,'discount'=>0,'count'=>1,'created_at'=>'2025-06-10 09:35:08','updated_at'=>'2025-06-10 09:35:08',],
+['id'=>399,'name'=>'حبة','product_id'=>302,'discount'=>0,'count'=>1,'created_at'=>'2025-06-10 09:37:25','updated_at'=>'2025-06-10 09:37:25',],
+['id'=>400,'name'=>'باكت','product_id'=>302,'discount'=>0,'count'=>12,'created_at'=>'2025-06-10 09:37:38','updated_at'=>'2025-06-10 09:37:38',],
+['id'=>401,'name'=>'حبة','product_id'=>303,'discount'=>0,'count'=>1,'created_at'=>'2025-06-10 09:39:54','updated_at'=>'2025-06-10 09:39:54',],
+['id'=>402,'name'=>'باكت','product_id'=>303,'discount'=>0,'count'=>100,'created_at'=>'2025-06-10 09:40:26','updated_at'=>'2025-06-10 09:40:26',],
+['id'=>403,'name'=>'حبة','product_id'=>304,'discount'=>0,'count'=>1,'created_at'=>'2025-06-10 09:45:25','updated_at'=>'2025-06-10 09:45:25',],
+['id'=>404,'name'=>'باكت','product_id'=>304,'discount'=>0,'count'=>100,'created_at'=>'2025-06-10 09:45:35','updated_at'=>'2025-06-10 09:45:35',],
+['id'=>405,'name'=>'حبة','product_id'=>305,'discount'=>0,'count'=>1,'created_at'=>'2025-06-10 09:51:44','updated_at'=>'2025-06-10 09:51:44',],
+['id'=>406,'name'=>'باكت','product_id'=>305,'discount'=>0,'count'=>100,'created_at'=>'2025-06-10 09:51:59','updated_at'=>'2025-06-10 09:51:59',],
 
 ];

@@ -54,7 +54,7 @@ class SaleItem extends Model
 
     public function costPrice()
     {
-        return $this->unit->costPrice($this->product_price) * $this->quantity;
+        return $this->unit->costPrice() * $this->quantity;
     }
      protected static function booted(): void
      {

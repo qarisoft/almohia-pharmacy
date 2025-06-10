@@ -69,7 +69,9 @@ class SalesResource extends Resource
                             ->live()
                             ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
                                 $set('end_price', null);
-                                $set('unit_id', null);
+                                $p=Product::query()->find($state);
+//                                if ($p->units()->count())
+                                $set('unit_id', $p->units()->first()->id);
                             })
                             ->required()
                             ->autofocus(fn($operation) => $operation == 'create')

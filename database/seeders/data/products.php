@@ -297,5 +297,10 @@ return [
 ['id'=>298,'unit_price'=>400,'barcode'=>'','name_ar'=>'اكستنشن تيوب','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-08 01:37:03','updated_at'=>'2025-06-08 01:37:03',],
 ['id'=>299,'unit_price'=>1200,'barcode'=>'6253503197485','name_ar'=>'فاين جاف فل','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-08 01:54:20','updated_at'=>'2025-06-08 01:54:20',],
 ['id'=>300,'unit_price'=>140000,'barcode'=>'','name_ar'=>'ريبوفان 50مل','name_en'=>'ribofan 50ml','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-10 05:30:48','updated_at'=>'2025-06-10 05:30:48',],
+['id'=>301,'unit_price'=>12000,'barcode'=>'','name_ar'=>'قساطر غسيل كلوي','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-10 09:34:25','updated_at'=>'2025-06-10 09:34:25',],
+['id'=>302,'unit_price'=>100,'barcode'=>'','name_ar'=>'لصق دائري','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-10 09:37:13','updated_at'=>'2025-06-10 09:37:13',],
+['id'=>303,'unit_price'=>20,'barcode'=>'','name_ar'=>'شاش اصابع','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-10 09:39:39','updated_at'=>'2025-06-10 09:39:39',],
+['id'=>304,'unit_price'=>100,'barcode'=>'','name_ar'=>'انابيب سي بي سي','name_en'=>'cbc bibes','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-10 09:45:04','updated_at'=>'2025-06-10 09:45:04',],
+['id'=>305,'unit_price'=>100,'barcode'=>'','name_ar'=>'انابيب بايو صغير','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-10 09:51:33','updated_at'=>'2025-06-10 09:51:33',],
 
 ];

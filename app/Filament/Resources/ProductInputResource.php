@@ -103,6 +103,8 @@ class ProductInputResource extends Resource
                 TextColumn::make('header.bill_number')->label(__('bill_number')) ,
             ])
             ->filters([
+
+                Tables\Filters\Filter::make('noid')->query(fn($query) => $query->whereNull('unit_id')),
                 SelectFilter::make('header')
                     ->relationship('header', 'bill_number')
                     ->options(fn (): array => ProductInputHeader::query()->pluck('bill_number', 'id')->all())
