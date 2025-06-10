@@ -17,10 +17,11 @@ return new class extends Migration
             $table->foreignId('product_id');
             $table->foreignId('header_id')->nullable();
             $table->foreignId('vendor_id')->nullable();
-            $table->enum('payment_type', ['cash', 'debit']);
+            $table->enum('payment_type', ['cash', 'debit'])->default('cash');
             $table->double('total_cost_price');
             $table->double('unit_cost_price');
             $table->timestamp('expire_date')->nullable();
+            $table->foreignId('unit_id')->nullable();
             $table->timestamps();
         });
     }

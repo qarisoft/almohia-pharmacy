@@ -57,12 +57,12 @@ class ProductResource extends Resource
                 TextColumn::make('id'),
                 TextColumn::make('name_ar')->searchable()
                     ->label(__('name_ar')),
+                TextColumn::make('lastStoreItem.unit_cost_price'),
                 TextColumn::make('unit_price'),
                 TextColumn::make('inputs')
                     ->label(__('in_store'))
                     ->state(fn(Product $record) => $record->inputItemsCount() - $record->soldItemsCount()),
                 TextColumn::make('scientific_name')->label(__('scientific_name')),
-//                TextColumn::make('sell_price')->label(__('price')),
                 TextColumn::make('barcode'),
                 TextColumn::make('company.name')
                     ->label(__('company'))

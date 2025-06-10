@@ -17,6 +17,8 @@
     "bill_number": "رقم الفاتورة",
     "count": "العدد",
     "no_price": "غير مسعر",
-    "withPrice": "مسعر"
+    "withPrice": "مسعر",
+    "unit": "العبوة",
+    "cost_price": "التكلفة"
 
 }

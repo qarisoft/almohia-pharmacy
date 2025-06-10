@@ -2,6 +2,11 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\SalePoint\Resources\SalesResource;
+use App\Filament\SalePoint\Resources\SalesResource\Pages\CreateSales;
+use App\Filament\SalePoint\Resources\SalesResource\Pages\EditSales;
+use App\Filament\SalePoint\Resources\SalesResource\Pages\ListSales;
+use App\Filament\SalePoint\Resources\SalesResource\Pages\ViewSales;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -30,10 +35,18 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Blue,
             ])
+            
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
+            ->resources([
+                SalesResource::class
+            ])
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
                 Pages\Dashboard::class,
+                // CreateSales::class,
+                // EditSales::class,
+                // ListSales::class,
+                // ViewSales::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([

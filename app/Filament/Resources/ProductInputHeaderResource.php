@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductInputHeaderResource\Pages;
 //use App\Filament\Resources\ProductInputHeaderResource\RelationManagers;
+use App\Filament\Resources\ProductInputHeaderResource\RelationManagers\ItemsRelationManager;
 use App\Models\Store\ProductInputHeader;
 use App\Models\Store\Vendor;
 use Filament\Forms;
@@ -34,7 +35,7 @@ class ProductInputHeaderResource extends Resource
                     ])
                     ->label(__('vendor')),
                 TextInput::make('bill_number')->label(__('bill_number')),
-                TextInput::make('total_price')->label(__('total_price')),
+                TextInput::make('total_price')->label(__('total_price'))->default(0),
 
 
             ]);
@@ -64,7 +65,7 @@ class ProductInputHeaderResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ItemsRelationManager::class
         ];
     }
 

@@ -10,15 +10,11 @@ class SaleHeader extends Model
 {
     /** @use HasFactory<\Database\Factories\Sales\SaleHeaderFactory> */
     use HasFactory;
-    protected $fillable=[
-        'end_price',
-        'cost_price',
-        'discount',
-    ];
+    protected $guarded=[];
 
     public function items(): HasMany
     {
-        return $this->hasMany(SaleItem::class,'header_id');
+        return $this->hasMany(SaleItem::class, 'header_id');
     }
 
     public function itemCount(): int
@@ -26,5 +22,8 @@ class SaleHeader extends Model
         return $this->items()->sum('quantity');
     }
 
-
+    public function additions(): HasMany
+    {
+        return $this->hasMany(SaleItemPlus::class);
+    }
 }

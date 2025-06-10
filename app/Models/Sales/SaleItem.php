@@ -12,30 +12,63 @@ class SaleItem extends Model
 {
     /** @use HasFactory<\Database\Factories\Sales\SaleItemFactory> */
     use HasFactory;
-    protected $guarded=[];
-//    protected $fillable=[
-//        'product_id',
-//        'header_id',
-//        'quantity',
-//        'end_price',
-//        'product_price',
-//    ];
+
+    protected $guarded = [];
 
 
     public function header(): BelongsTo
     {
-        return $this->belongsTo(SaleHeader::class,'header_id');
+        return $this->belongsTo(SaleHeader::class, 'header_id');
     }
 
     public function product(): BelongsTo
     {
-        return   $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class);
     }
-
 
     public function unit(): BelongsTo
     {
-        return $this->belongsTo(MeasureUnit::class,'unit_id');
+        return $this->belongsTo(MeasureUnit::class, 'unit_id');
     }
+
+
+    public function getUnitId()
+    {
+        if ($this->unit()->exists()) {
+            return $this->unit->id;
+        }
+        return $this->product->units()->where('count', $this->type)->first()?->id;
+    }
+
+    public function calculateCost()
+    {
+        $a = $this->product_price;
+        return ($a / $this->unit->count) * $this->count;
+    }
+
+    public function calculateProfit(): int
+    {
+        return $this->unit->profit() * $this->quantity;
+    }
+
+
+    public function costPrice()
+    {
+        return $this->unit->costPrice($this->product_price) * $this->quantity;
+    }
+     protected static function booted(): void
+     {
+         static::created(function (SaleItem $saleItem) {
+             $saleItem->profit=$saleItem->calculateProfit();
+             $saleItem->product_price = $saleItem->product->unit_price;
+             $saleItem->save();
+         });
+         static::updating(function (SaleItem $saleItem) {
+             $saleItem->profit=$saleItem->calculateProfit();
+             if ($saleItem->wasChanged(['product_id'])){
+                 $saleItem->product_price = $saleItem->product->unit_price;
+             }
+         });
+     }
 
 }

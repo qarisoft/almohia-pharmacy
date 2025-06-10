@@ -16,8 +16,14 @@ return new class extends Migration
             $table->foreignId('product_id');
             $table->foreignId('header_id')->nullable();
             $table->integer('quantity');
-            $table->double('product_price')->nullable();
             $table->double('end_price');
+            $table->double('cost_price')->nullable();
+            $table->double('unit_cost_price')->nullable();
+            $table->double('product_price')->nullable();
+            $table->double('discount')->nullable();
+            $table->double('profit')->default(0);
+            $table->integer('unit_id')->default(1);
+            $table->integer('unit_count')->nullable();
             $table->timestamps();
         });
     }

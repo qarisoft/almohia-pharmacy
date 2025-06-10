@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\ProductResource\RelationManagers;
 
+use App\Models\Products\MeasureUnit;
 use App\Models\Products\MeasureUnitName;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
@@ -30,6 +31,9 @@ class UnitsRelationManager extends RelationManager
                     ->required()
                     ->minValue(1)
                     ->default(2),
+
+                TextInput::make('discount')->numeric()->default(0),
+//                TextInput::make('product.uni')->readOnly(),
             ]);
     }
 
@@ -40,9 +44,11 @@ class UnitsRelationManager extends RelationManager
             ->columns([
                 TextColumn::make('name'),
                 TextColumn::make('count'),
+                TextColumn::make('sell-Price')->state(fn(MeasureUnit $record)=>$record->sellPrice()),
+                TextColumn::make('discount'),
                 TextColumn::make('is_primary')
-                    ->state(fn($record)=>$record->count === 1?'primary':'')
-                    ->badge()
+                    ->state(fn($record)=>$record->count === 1?'primary':($record->isCost() ? 'isCost' : ""))
+                    ->badge(),
 
             ])
             ->filters([

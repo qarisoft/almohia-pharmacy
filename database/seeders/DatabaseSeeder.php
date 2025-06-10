@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Products\Product;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -22,9 +23,16 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call(MeasureUnitNameSeeder::class);
-        $this->call(CompanySeeder::class);
+        // $this->call(CompanySeeder::class);
         $this->call(ProductsSeeder::class);
+        $this->call(MeasureUnitSeeder::class);
         $this->call(ProductInputSeeder::class);
+        $this->call(SaleItemSeeder::class);
+
+        
+
+
+
 //        $this->call(Bill1525::class);
 
 

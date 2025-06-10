@@ -22,6 +22,14 @@ class ProductInputHeader extends Model
         return $this->hasMany(ProductInput::class, 'header_id')->sum('total_cost_price');
     }
 
+    public function updateTotalPrice()
+    {
+        $this->total_price=$this->totalCost();
+        $this->save();
+    }
+//    protected static function booted(): void
+//    {
+//    }
 
 
 }

@@ -10,6 +10,7 @@ use App\Models\Store\ProductInput;
 use App\Models\Store\ProductInputHeader;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
@@ -41,7 +42,7 @@ class ProductInputResource extends Resource
                     ->required()
                     ->autofocus(fn($operation) => $operation == 'create')
                     ->searchable()
-                    ->getSearchResultsUsing(fn($s) => Product::search($s))
+                    ->getSearchResultsUsing(fn($search) => Product::search($search))
                     ->columnSpan(3),
                 TextInput::make('quantity')
                     ->numeric()
@@ -53,6 +54,21 @@ class ProductInputResource extends Resource
                     ->columns(1),
                 DatePicker::make('expire_date')
                     ->columnSpan(2),
+                Select::make('unit_id')
+                    ->live()
+                    ->options(function($get){
+                        $pId=$get('product_id');
+                        $product=Product::find($pId);
+                        if ($product) {
+                            $aa = [];
+                            foreach($product->units as $u){
+                                $aa[$u->id]=$u->name.' -'.$u->count;
+                            }
+
+                            return $aa;
+                        }
+                        return [];
+                    }),
                 Forms\Components\TextInput::make('unit_cost_price')
                     ->numeric()
                     ->live()

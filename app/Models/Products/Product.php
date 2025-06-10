@@ -21,14 +21,8 @@ class Product extends Model
     /** @use HasFactory<\Database\Factories\Products\ProductFactory> */
     use HasFactory, Blamable;
 
-
-    protected $fillable = [
-        'name_ar',
-        'name_en',
-        'sell_price',
-        'barcode',
-        'unit_price'
-    ];
+    protected $with = ['units'];
+    protected $guarded = [];
 
     static function search(string $search): array
     {
@@ -43,6 +37,12 @@ class Product extends Model
     }
 
 
+    public function unit_cost_price()
+    {
+        return $this->hasMany(ProductInput::class, 'product_id')->latest()->limit(1);
+    }
+
+
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class, 'company_id');
@@ -53,9 +53,18 @@ class Product extends Model
         return $this->hasOne(Price::class);
     }
 
+    public function unitPrice()
+    {
+        return $this->unit_price ?? 0;
+    }
+
     public function storeItems(): HasMany
     {
         return $this->hasMany(ProductInput::class);
+    }
+    public function lastStoreItem(): HasOne
+    {
+        return $this->hasOne(ProductInput::class)->orderBy('unit_cost_price')->limit(1);
     }
 
     public function inStore(): int
@@ -63,6 +72,10 @@ class Product extends Model
         return $this->inputItemsCount() - $this->soldItemsCount();
     }
 
+    public function inputItems(): HasMany
+    {
+        return $this->hasMany(ProductInput::class);
+    }
     public function inputItemsCount()
     {
         return $this->hasMany(ProductInput::class)->sum('quantity');
@@ -90,13 +103,13 @@ class Product extends Model
     }
 
 
-    protected static function booted(): void
-    {
-        static::created(function (Product $product) {
-            $product->units()->create([
-                'count' => 1,
-                'name' => str_contains($product->name_ar, 'شراب') ? 'زجاجة' : 'default'
-            ]);
-        });
-    }
+    // protected static function booted(): void
+    // {
+    //     static::created(function (Product $product) {
+    //         $product->units()->create([
+    //             'count' => 1,
+    //             'name' => str_contains($product->name_ar, 'شراب') ? 'زجاجة' : 'default'
+    //         ]);
+    //     });
+    // }
 }

@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('measure_units', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            // $table->foreignIdFor(MeasureUnitName::class);
             $table->integer('count');
-            $table->foreignId('product_id');
+            $table->integer('discount');
+            $table->foreignId('product_id')->constrained('products','id')->cascadeOnDelete();
             $table->timestamps();
         });
     }

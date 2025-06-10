@@ -17,15 +17,22 @@ class MeasureUnitNameSeeder extends Seeder
     public function run(): void
     {
         MeasureUnitName::factory()->createMany([
-            ['name'=>'باكت'],
-            ['name'=>'امبولة'],
-            ['name'=>'قربة'],
-            ['name'=>'فيالة'],
-            ['name'=>'شريط'],
-            ['name'=>'زجاجة'],
-            ['name'=>'كرتون'],
-            ['name'=>'حبة'],
-            ['name'=>'شدة'],
+            ['id'=>1,'name'=>'باكت'],
+            ['id'=>2,'name'=>'امبولة'],
+            ['id'=>3,'name'=>'قربة'],
+            ['id'=>4,'name'=>'فيالة'],
+            ['id'=>5,'name'=>'شريط'],
+            ['id'=>6,'name'=>'زجاجة'],
+            ['id'=>7,'name'=>'كرتون'],
+            ['id'=>8,'name'=>'حبة'],
+            ['id'=>9,'name'=>'شدة'],
+            ['id'=>10,'name'=>'مغذية'],
+            ['id'=>11,'name'=>'كيس'],
+            ['id'=>12,'name'=>'تبخيرة'],
+            ['id'=>13,'name'=>'مرهم'],
+            ['id'=>14,'name'=>'حقنة'],
+            ['id'=>15,'name'=>'قرص'],
+            ['id'=>16,'name'=>'قطر'],
         ]);
 
     }

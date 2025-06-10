@@ -15,6 +15,14 @@ use Illuminate\Database\Seeder;
 class ProductInputSeeder extends Seeder
 {
 
+    function run() : void {
+        $headers = require 'database/seeders/data/product_input_headers.php';
+        ProductInputHeader::factory()->createMany($headers);
+        
+        $inputs = require 'database/seeders/data/product_inputs.php';
+        ProductInput::factory()->createMany($inputs);
+    }
+
 
     public function createProductInput(array $data): void
     {
@@ -36,7 +44,7 @@ class ProductInputSeeder extends Seeder
             ]);
         }
     }
-    public function run(): void
+    public function v1(): void
     {
         $data = [
             [

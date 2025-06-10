@@ -6,23 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
-        Schema::create('measure_unit_counts', function (Blueprint $table) {
+        Schema::create('sale_item_pluses', function (Blueprint $table) {
             $table->id();
-            $table->integer('count');
+            $table->foreignId('header_id')->constrained('headers')->cascadeOnDelete();
+            $table->double('price')->default(0);
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+
     public function down(): void
     {
-        Schema::dropIfExists('measure_unit_counts');
+        Schema::dropIfExists('sale_item_pluses');
     }
 };
