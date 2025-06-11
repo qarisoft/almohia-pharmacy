@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('sale_headers', function (Blueprint $table) {
             $table->id();
             $table->double('end_price');
+            $table->double('profit_price')->nullable();
             $table->double('cost_price')->nullable();
             $table->double('discount')->default(0);
             $table->string('customer_name')->nullable();

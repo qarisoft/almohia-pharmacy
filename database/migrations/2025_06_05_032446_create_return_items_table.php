@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id');
             $table->foreignId('header_id');
+            $table->foreignId('unit_id');
             $table->integer('quantity');
             $table->double('product_price')->nullable();
             $table->double('end_price');

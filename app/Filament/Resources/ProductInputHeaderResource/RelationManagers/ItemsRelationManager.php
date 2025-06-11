@@ -27,7 +27,10 @@ class ItemsRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Select::make('product_id')
+                Select::make('product_id')->relationship('product', 'name_ar')
+                    ->createOptionForm([
+                        TextInput::make('name_ar')->required()
+                    ])
                     ->options(fn() => Product::pluck('name_ar', 'id'))
                     ->required()
                     ->autofocus(fn($operation) => $operation == 'create')

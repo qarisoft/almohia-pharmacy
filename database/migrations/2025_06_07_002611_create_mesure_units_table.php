@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->integer('count');
             $table->integer('discount');
+            $table->double('sell_price')->nullable();
+            $table->double('cost_price')->nullable();
             $table->foreignId('product_id')->constrained('products','id')->cascadeOnDelete();
             $table->timestamps();
         });

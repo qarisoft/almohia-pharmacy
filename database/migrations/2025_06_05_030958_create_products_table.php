@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('name_en')->nullable();
             $table->string('scientific_name')->nullable();
             $table->foreignId('company_id')->nullable();
+            $table->foreignId('created_by')->nullable();
             $table->double('sell_price')->nullable();
+            $table->double('cost_price')->nullable();
             $table->double('unit_price')->nullable();
             $table->string('barcode')->nullable();
             $table->timestamps();

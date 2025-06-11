@@ -17,6 +17,12 @@ class SaleHeader extends Model
         return $this->hasMany(SaleItem::class, 'header_id');
     }
 
+    public function updateProfit(): void
+    {
+        $this->profit_price = $this->items()->sum('profit');
+        $this->save();
+    }
+
     public function itemCount(): int
     {
         return $this->items()->sum('quantity');

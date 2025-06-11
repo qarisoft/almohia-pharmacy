@@ -12,18 +12,11 @@ class ReturnItem extends Model
     /** @use HasFactory<\Database\Factories\Refund\ReturnItemFactory> */
     use HasFactory;
 
-    protected $fillable = [
-        'end_price',
-        'quantity',
-        'product_id',
-        'header_id',
-        'product_price'
-    ];
-
+    protected $guarded=[];
 
     public function header(): BelongsTo
     {
-        return $this->belongsTo(ReturnHeader::class);
+        return $this->belongsTo(ReturnHeader::class,'header_id');
     }
     public function product(): BelongsTo
     {

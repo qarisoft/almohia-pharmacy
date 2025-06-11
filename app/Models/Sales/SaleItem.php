@@ -56,19 +56,30 @@ class SaleItem extends Model
     {
         return $this->unit->costPrice() * $this->quantity;
     }
-     protected static function booted(): void
-     {
-         static::created(function (SaleItem $saleItem) {
-             $saleItem->profit=$saleItem->calculateProfit();
-             $saleItem->product_price = $saleItem->product->unit_price;
-             $saleItem->save();
-         });
-         static::updating(function (SaleItem $saleItem) {
-             $saleItem->profit=$saleItem->calculateProfit();
-             if ($saleItem->wasChanged(['product_id'])){
-                 $saleItem->product_price = $saleItem->product->unit_price;
-             }
-         });
-     }
+
+    protected static function booted(): void
+    {
+
+//        static::creating(function (SaleItem $sale) {
+////             $sale->unit_id =
+//        });
+        static::created(function (SaleItem $saleItem) {
+            $saleItem->profit = $saleItem->calculateProfit();
+            $saleItem->product_price = $saleItem->product->unit_price;
+            $saleItem->save();
+            $saleItem->header->updateProfit();
+        });
+
+        static::updated(function (SaleItem $saleItem) {
+            $saleItem->header->updateProfit();
+        });
+
+        static::updating(function (SaleItem $saleItem) {
+            $saleItem->profit = $saleItem->calculateProfit();
+            if ($saleItem->wasChanged(['product_id'])) {
+                $saleItem->product_price = $saleItem->product->unit_price;
+            }
+        });
+    }
 
 }

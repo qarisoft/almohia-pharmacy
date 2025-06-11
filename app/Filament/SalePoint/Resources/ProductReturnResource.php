@@ -2,10 +2,12 @@
 
 namespace App\Filament\SalePoint\Resources;
 
-use App\Filament\SalePoint\Resources\SalesResource\Pages;
+use App\Filament\SalePoint\Resources\ProductReturnResource\Pages;
+
+//use App\Filament\SalePoint\Resources\ProductReturnResource\RelationManagers;
 use App\Models\Products\MeasureUnit;
 use App\Models\Products\Product;
-use App\Models\Sales\SaleHeader;
+use App\Models\Refund\ReturnHeader;
 use Filament\Forms;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Repeater;
@@ -16,24 +18,14 @@ use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
 
-class SalesResource extends Resource
+//use Illuminate\Database\Eloquent\Builder;
+//use Illuminate\Database\Eloquent\SoftDeletingScope;
+
+class ProductReturnResource extends Resource
 {
-    protected static ?string $model = SaleHeader::class;
-
-    public static function getLabel(): ?string
-    {
-        return __('Sales');
-    }
-
-    public static function getPluralLabel(): ?string
-    {
-        return __('Sales');
-    }
-
+    protected static ?string $model = ReturnHeader::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -44,10 +36,6 @@ class SalesResource extends Resource
                 Repeater::make('items')->label(__('items'))
                     ->relationship('items')
                     ->live()
-//                    ->mutateRelationshipDataBeforeFillUsing(function ($data) {
-//                        dump($data);
-//                    })
-//                    ->lazy()
                     ->afterStateUpdated(function (Set $set, Get $get, $state) {
                         $price = 0;
                         foreach ($state as $priceItem) {
@@ -57,8 +45,7 @@ class SalesResource extends Resource
                                 $price = $price + MeasureUnit::getSellPrice($unit_id, $quantity);
                             }
                         }
-                        $discount = $get('discount');
-                        $set('end_price', $price - intval($discount ?? 0));
+                        $set('end_price', $price - intval($get('discount') ?? 0));
                     })
                     ->schema([
                         Select::make('product_id')
@@ -82,7 +69,7 @@ class SalesResource extends Resource
                             ->preload()
                             ->native(false)
                             ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
-                                $set('end_price', MeasureUnit::getSellPrice($state,$get('quantity')));
+                                $set('end_price', MeasureUnit::getSellPrice($state, $get('quantity')));
                             })
                             ->options(fn(Get $get) => MeasureUnit::query()
                                 ->where('product_id', $get('product_id'))
@@ -95,25 +82,17 @@ class SalesResource extends Resource
                             ->live(debounce: 600)
                             ->required()
                             ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
-                                $set('end_price', intval((MeasureUnit::getSellPrice($get('unit_id'),$state)) ));
-                                $set('cost_price', intval((MeasureUnit::getCostPrice($get('unit_id'),$state)) ));
+                                $set('end_price', intval((MeasureUnit::getSellPrice($get('unit_id'), $state))));
                             })
                             ->required()
                             ->default(0)
                             ->columns(1),
 
-//                        TextInput::make('discount')
-//                            ->label(__('discount'))
-//                            ->numeric()
-//                            ->default(0),
                         TextInput::make('end_price')
                             ->label(__('price'))
                             ->numeric()
                             ->default(0),
-                        TextInput::make('cost_price')
-                            ->label(__('cost_price'))
-                            ->numeric()
-                            ->default(0)
+
                     ])->columns(8)
                     ->columnSpanFull(),
 
@@ -123,18 +102,19 @@ class SalesResource extends Resource
                         ->label(__('discount'))
                         ->numeric()
                         ->live(onBlur: true)
-//                        ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
-//                            $items = $get('items');
-//                            $price = 0;
-//                            foreach ($items as $item) {
-//                                $price = $price + $item['end_price'];
-//                            }
-//                            $set('end_price', $price - $state);
-//                        })
+                        ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
+                            $items = $get('items');
+                            $price = 0;
+                            foreach ($items as $item) {
+                                $price = $price + $item['end_price'];
+                            }
+                            $set('end_price', $price - $state);
+                        })
                         ->inlineLabel()
                         ->default(0),
 
-                    TextInput::make('end_price')->inlineLabel()
+                    TextInput::make('end_price')
+                        ->inlineLabel()
                         ->label(__('end_price'))
                         ->numeric()
                         ->readOnly()
@@ -147,31 +127,20 @@ class SalesResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id'),
-                Tables\Columns\TextColumn::make('end_price')
-                    ->summarize(Sum::make('Sum')),
-                Tables\Columns\TextColumn::make('profit_price')
-                    ->hidden(fn()=>! auth()->user()->is_admin)
-                    ->summarize(Tables\Columns\Summarizers\Sum::make('Sum')),
-//                Tables\Columns\TextColumn::make('pf')->state(fn($record)=>$record->items()->sum('profit')),
-                Tables\Columns\TextColumn::make('created_at'),
-                Tables\Columns\TextColumn::make('updated_at'),
+                //
             ])
-            ->defaultSort('id', 'desc')
             ->filters([
-//                Tables\Filters\Filter::make('today')
-//                    ->default()
-//                    ->query(fn(Builder $query): Builder => $query->where('created_at', '>', today()->toDateString())),
+                //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ])->persistFiltersInSession();
+            ]);
     }
 
     public static function getRelations(): array
@@ -181,22 +150,13 @@ class SalesResource extends Resource
         ];
     }
 
-
-    public static function getEloquentQuery(): Builder
-    {
-        if (auth()->user()->is_admin){
-            return SaleHeader::query();
-        }
-        return SaleHeader::query()->where('created_at', '>', today()->toDateString());
-    }
-
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSales::route('/'),
-            'create' => Pages\CreateSales::route('/create'),
-            'view' => Pages\ViewSales::route('/{record}'),
-            'edit' => Pages\EditSales::route('/{record}/edit'),
+            'index' => Pages\ListProductReturns::route('/'),
+            'create' => Pages\CreateProductReturn::route('/create'),
+            'view' => Pages\ViewProductReturn::route('/{record}'),
+            'edit' => Pages\EditProductReturn::route('/{record}/edit'),
         ];
     }
 }

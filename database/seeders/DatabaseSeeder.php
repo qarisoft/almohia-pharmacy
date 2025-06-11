@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Products\MeasureUnit;
 use App\Models\Products\Product;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -18,18 +19,36 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Salah',
             'email' => 'salah@t.t',
+            'is_admin' => true,
+        ]);
+        User::factory()->create([
+            'name' => 'User 1',
+            'email' => 'user@t.t',
         ]);
 
 
 
         $this->call(MeasureUnitNameSeeder::class);
-        // $this->call(CompanySeeder::class);
         $this->call(ProductsSeeder::class);
         $this->call(MeasureUnitSeeder::class);
         $this->call(ProductInputSeeder::class);
         $this->call(SaleItemSeeder::class);
+//        Product::all()->each(function (Product $product) {
+//            $units = $product->units;
+//            foreach ($units as $unit) {
+//                $fr = 0;
+//
+////                if ($unit->isCost()) {
+////                    $fr=1;
+////                }
+//            }
+//        });
+//        MeasureUnit::all()->each(function (MeasureUnit $unit) {
+//
+//
+//        });
 
-        
+
 
 
 

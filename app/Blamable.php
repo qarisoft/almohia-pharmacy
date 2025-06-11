@@ -13,8 +13,11 @@ trait Blamable
 {
     protected static function bootBlamable(): void
     {
-        static::created(function ($model) {
-            $model->createdBy()->create(['user_id' => auth()->id() ?? 1]);
+        static::created(function ( $model) {
+            $model->update([
+                'created_by'=>auth()->id() ?? 1
+            ]);
+//            $model->createdBy()->associate( auth()->id() ?? 1);
         });
     }
 

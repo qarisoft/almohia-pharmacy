@@ -46,6 +46,7 @@ class ProductInputHeaderResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('id'),
                 TextColumn::make('bill_number')
                     ->label(__('bill_number')),
                 TextColumn::make('total_price')
