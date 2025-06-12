@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('sale_headers', function (Blueprint $table) {
-            $table->double('addition')->nullable();
+            $table->double('addition')->default(0);
         });
     }
 
