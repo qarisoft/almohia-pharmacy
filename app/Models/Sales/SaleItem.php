@@ -51,6 +51,12 @@ class SaleItem extends Model
         return $this->unit->profit() * $this->quantity;
     }
 
+    public function updateProfit()
+    {
+        $this->profit = $this->calculateProfit();
+        $this->save();
+    }
+
 
     public function costPrice()
     {
@@ -67,11 +73,11 @@ class SaleItem extends Model
             $saleItem->profit = $saleItem->calculateProfit();
             $saleItem->product_price = $saleItem->product->unit_price;
             $saleItem->save();
-            $saleItem->header->updateProfit();
+            $saleItem->header?->updateProfit();
         });
 
         static::updated(function (SaleItem $saleItem) {
-            $saleItem->header->updateProfit();
+            $saleItem->header?->updateProfit();
         });
 
         static::updating(function (SaleItem $saleItem) {

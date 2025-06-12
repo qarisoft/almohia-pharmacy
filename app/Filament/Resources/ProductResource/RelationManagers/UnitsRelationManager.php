@@ -10,6 +10,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 //use Illuminate\Database\Eloquent\Builder;
@@ -42,6 +43,7 @@ class UnitsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('count')
             ->columns([
+                TextColumn::make('isCost')->badge()->state(fn(MeasureUnit $record) => $record->isCost() ? "isCost" : "no"),
                 TextColumn::make('name'),
                 TextColumn::make('count'),
                 TextColumn::make('sell-Price')->state(fn(MeasureUnit $record)=>$record->sellPrice()),
@@ -58,6 +60,10 @@ class UnitsRelationManager extends RelationManager
                 Tables\Actions\CreateAction::make(),
             ])
             ->actions([
+                Action::make('cost')->action(function (MeasureUnit $record) {
+                    $a = $record->product->lastStoreItem;
+                    $a->update(['unit_id' => $record->id]);
+                }),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])

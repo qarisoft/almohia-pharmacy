@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\Models\Products\MeasureUnit;
 use App\Models\Products\Product;
+use App\Models\Refund\ReturnHeader;
+use App\Models\Refund\ReturnItem;
 use App\Models\Sales\SaleHeader;
 use App\Models\Sales\SaleItem;
 use App\Models\Store\ProductInput;
@@ -77,42 +79,57 @@ return [
     function saleHeaders() : void {
         $a0='';
         foreach (SaleHeader::all() as $p) {
+
             $a1 = '['
-                . $this->mkId('id', $p->id)
                 . $this->mkId('end_price', $p->end_price)
                 . $this->mkId('cost_price', $p->cost_price)
                 . $this->mkIdZero('discount', $p->discount)
                 . $this->mk('customer_name', $p->customer_name)
                 . $this->mk('created_at', $p->created_at)
                 . $this->mk('updated_at', $p->updated_at)
+                    ."'"."items"."'"."=>".$this->makeSaleItems($p)
                 . $this->_close();
             $a0 = $a0 . $a1;
         }
         $this->makeFile('database/seeders/data/sale_headers.php',$a0);
     }
 
-
-
+    public function makeSaleItems(SaleHeader $p) : string
+    {
+        $a='
+    [';
+        foreach ($p->items as $item) {
+            $a0 = $this->makeSaleItem($item);
+            $a = $a . $a0;
+        }
+        $a=$a.'
+    ]';
+        return  $a;
+    }
+    public function makeSaleItem($p)
+    {
+        $a1 = '['
+//            . $this->mkId('id', $p->id)
+            . $this->mkId('product_id', $p->product_id)
+            . $this->mkId('header_id', $p->header_id)
+            . $this->mkId('quantity', $p->quantity)
+            . $this->mkId('cost_price', $p->cost_price)
+            . $this->mkId('end_price', $p->end_price)
+            . $this->mkId('product_price', $p->product_price)
+            . $this->mkIdZero('discount', $p->discount)
+            . $this->mkId('unit_id', $p->getUnitId())
+            . $this->mkId('unit_count', $p->type)
+            . $this->mk('created_at', $p->created_at)
+            . $this->mk('updated_at', $p->updated_at)
+            . $this->_close();
+        return $a1;
+    }
 
     function saleItems() : void {
         $a0='';
         foreach (SaleItem::all() as $p) {
-            print($p->getUnitId());
-            $a1 = '['
-                . $this->mkId('id', $p->id)
-                . $this->mkId('product_id', $p->product_id)
-                . $this->mkId('header_id', $p->header_id)
-                . $this->mkId('quantity', $p->quantity)
-                . $this->mkId('cost_price', $p->cost_price)
-                . $this->mkId('end_price', $p->end_price)
-                . $this->mkId('product_price', $p->product_price)
-                . $this->mkIdZero('discount', $p->discount)
-//                . $this->mkId('unit_id', $p->unit_id)
-                . $this->mkId('unit_id', $p->getUnitId())
-                . $this->mkId('unit_count', $p->type)
-                . $this->mk('created_at', $p->created_at)
-                . $this->mk('updated_at', $p->updated_at)
-                . $this->_close();
+//            print($p->getUnitId());
+            $a1=$this->makeSaleItem($p);
             $a0 = $a0 . $a1;
         }
 
@@ -120,12 +137,53 @@ return [
 //        $this->makeFile('sale_items.php',$a0);
     }
 
+    public function returnHeaders()
+    {
+        $a0='';
+        foreach (ReturnHeader::all() as $p) {
+//            $table->double('end_price');
+//            $table->double('cost_price');
+//            $table->double('discount');
+            $a1 = '['
+//                . $this->mkId('id', $p->id)
+                . $this->mkId('end_price', $p->end_price)
+                . $this->mkId('cost_price', $p->cost_price)
+                . $this->mkIdZero('discount', $p->discount)
+                . $this->mk('created_at', $p->created_at)
+                . $this->mk('updated_at', $p->updated_at)
+                . $this->_close();
+            $a0 = $a0 . $a1;
+        }
+        $this->makeFile('database/seeders/data/return_headers.php',$a0);
 
+    }
+    public function returnItems()
+    {
+        $a0='';
+        foreach (ReturnItem::all() as $p) {
+
+            $a1 = '['
+//                . $this->mkId('id', $p->id)
+                . $this->mkIdZero('end_price', $p->end_price)
+                . $this->mkIdZero('product_price', $p->product_price)
+                . $this->mkIdZero('discount', $p->discount)
+                . $this->mkIdZero('quantity', $p->quantity)
+                . $this->mkIdZero('unit_id', $p->unit_id)
+                . $this->mk('created_at', $p->created_at)
+                . $this->mk('updated_at', $p->updated_at)
+                . $this->_close();
+            $a0 = $a0 . $a1;
+        }
+        $this->makeFile('database/seeders/data/return_items.php',$a0);
+
+    }
 
     public function handle()
     {
         // $sales = DB::connection('sqlite')->table('sale_headers')->get();
         $this->saleHeaders();
-        $this->saleItems();
+        $this->returnHeaders();
+        $this->returnItems();
+//        $this->saleItems();
     }
 }

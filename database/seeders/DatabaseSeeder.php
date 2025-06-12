@@ -33,32 +33,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MeasureUnitSeeder::class);
         $this->call(ProductInputSeeder::class);
         $this->call(SaleItemSeeder::class);
-//        Product::all()->each(function (Product $product) {
-//            $units = $product->units;
-//            foreach ($units as $unit) {
-//                $fr = 0;
-//
-////                if ($unit->isCost()) {
-////                    $fr=1;
-////                }
-//            }
-//        });
-//        MeasureUnit::all()->each(function (MeasureUnit $unit) {
-//
-//
-//        });
-
-
-
-
-
-//        $this->call(Bill1525::class);
-
-
-
-//        $p=Product::factory()->create(['name_ar'=>'dsd','sell_price'=>10]);
-//        SaleHeader::factory()->make();
-
 
     }
 }

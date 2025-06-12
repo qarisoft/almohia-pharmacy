@@ -112,6 +112,7 @@ class ProductInputResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
                 Action::make('edit-product')
                     ->url(fn (ProductInput $record): string => route('filament.admin.resources.products.edit', $record->product))
                     ->openUrlInNewTab()
