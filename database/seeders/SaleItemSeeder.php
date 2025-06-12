@@ -8,6 +8,7 @@ use App\Models\Products\MeasureUnitName;
 use App\Models\Products\Product;
 use App\Models\Refund\ReturnHeader;
 use App\Models\Refund\ReturnItem;
+use App\Models\Refund\WithDraw;
 use App\Models\Sales\SaleHeader;
 use App\Models\Sales\SaleItem;
 use App\Models\User;
@@ -58,6 +59,13 @@ class SaleItemSeeder extends Seeder
         ReturnHeader::factory()->createMany($returns);
         $items = require 'database/seeders/data/return_items.php';
         ReturnItem::factory()->createMany($items);
+
+        if (file_exists('database/seeders/data/with_draws.php')) {
+
+            $with_draws = require 'database/seeders/data/with_draws.php';
+            WithDraw::factory()->createMany($with_draws);
+        }
+
 
 
     }

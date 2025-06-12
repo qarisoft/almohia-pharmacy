@@ -6,6 +6,7 @@ use App\Models\Products\MeasureUnit;
 use App\Models\Products\Product;
 use App\Models\Refund\ReturnHeader;
 use App\Models\Refund\ReturnItem;
+use App\Models\Refund\WithDraw;
 use App\Models\Sales\SaleHeader;
 use App\Models\Sales\SaleItem;
 use App\Models\Store\ProductInput;
@@ -141,11 +142,8 @@ return [
     {
         $a0='';
         foreach (ReturnHeader::all() as $p) {
-//            $table->double('end_price');
-//            $table->double('cost_price');
-//            $table->double('discount');
             $a1 = '['
-//                . $this->mkId('id', $p->id)
+                . $this->mkId('id', $p->id)
                 . $this->mkId('end_price', $p->end_price)
                 . $this->mkId('cost_price', $p->cost_price)
                 . $this->mkIdZero('discount', $p->discount)
@@ -163,7 +161,7 @@ return [
         foreach (ReturnItem::all() as $p) {
 
             $a1 = '['
-//                . $this->mkId('id', $p->id)
+                . $this->mkId('id', $p->id)
                 . $this->mkIdZero('end_price', $p->end_price)
                 . $this->mkIdZero('product_price', $p->product_price)
                 . $this->mkIdZero('discount', $p->discount)
@@ -175,7 +173,28 @@ return [
             $a0 = $a0 . $a1;
         }
         $this->makeFile('database/seeders/data/return_items.php',$a0);
+    }
 
+    public function withDrows()
+    {
+//        $table->id();
+//        $table->string('note');
+//        $table->double('amount');
+//        $table->foreignId('created_by')->nullable();
+        $a0='';
+        foreach (WithDraw::all() as $p) {
+
+            $a1 = '['
+                . $this->mkId('id', $p->id)
+                . $this->mk('note', $p->note)
+                . $this->mkIdZero('amount', $p->amount)
+                . $this->mkId('created_by', $p->created_by)
+                . $this->mk('created_at', $p->created_at)
+                . $this->mk('updated_at', $p->updated_at)
+                . $this->_close();
+            $a0 = $a0 . $a1;
+        }
+        $this->makeFile('database/seeders/data/with_draws.php',$a0);
     }
 
     public function handle()
