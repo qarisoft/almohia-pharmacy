@@ -20,5 +20,6 @@ return [
 ['id'=>16,'total_price'=>23440,'bill_number'=>231770,'vendor_id'=>null,'created_at'=>'2025-06-10 22:31:31','updated_at'=>'2025-06-12 14:46:02',],
 ['id'=>17,'total_price'=>8230,'bill_number'=>55277,'vendor_id'=>null,'created_at'=>'2025-06-10 23:26:47','updated_at'=>'2025-06-12 14:46:02',],
 ['id'=>18,'total_price'=>71750,'bill_number'=>55272,'vendor_id'=>null,'created_at'=>'2025-06-12 05:38:44','updated_at'=>'2025-06-12 14:46:02',],
+['id'=>19,'total_price'=>9200,'bill_number'=>111,'vendor_id'=>null,'created_at'=>'2025-06-12 15:39:26','updated_at'=>'2025-06-12 15:45:56',],
 
 ];
