@@ -117,23 +117,38 @@ class SalesResource extends Resource
                     ])->columns(8)
                     ->columnSpanFull(),
 
-                Fieldset::make()->schema([
-
+                Fieldset::make()
+                    ->schema([
                     TextInput::make('discount')
                         ->label(__('discount'))
                         ->numeric()
                         ->live(onBlur: true)
-//                        ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
-//                            $items = $get('items');
-//                            $price = 0;
-//                            foreach ($items as $item) {
-//                                $price = $price + $item['end_price'];
-//                            }
-//                            $set('end_price', $price - $state);
-//                        })
+                        ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
+                            $items = $get('items');
+                            $addition = $get('addition');
+                            $price = 0;
+                            foreach ($items as $item) {
+                                $price = $price + $item['end_price'];
+                            }
+                            $set('end_price', $price - $state + $addition);
+                        })
                         ->inlineLabel()
                         ->default(0),
-                    TextInput::make('customer_name'),
+                        TextInput::make('additions')
+                            ->label(__('addition'))
+                            ->numeric()
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
+                                $items = $get('items');
+                                $discount = $get('discount');
+                                $price = 0;
+                                foreach ($items as $item) {
+                                    $price = $price + $item['end_price'];
+                                }
+                                $set('end_price', $price - $discount+ $state);
+                            })
+                            ->inlineLabel()
+                            ->default(0),
 
 
                     TextInput::make('end_price')->inlineLabel()
@@ -141,7 +156,8 @@ class SalesResource extends Resource
                         ->numeric()
                         ->readOnly()
                         ->default(0),
-                ])->columnSpan(1)
+                ])->columnSpan(1),
+                Forms\Components\Textarea::make('customer_name'),
             ]);
     }
 
