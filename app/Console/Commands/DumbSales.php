@@ -154,7 +154,7 @@ return [
                 . $this->mkId('id', $p->id)
                 . $this->mkIdZero('end_price', $p->end_price)
                 . $this->mkIdZero('product_price', $p->product_price)
-                . $this->mkIdZero('discount', $p->discount)
+//                . $this->mkIdZero('discount', $p->discount)
                 . $this->mkIdZero('quantity', $p->quantity)
                 . $this->mkIdZero('unit_id', $p->unit_id)
                 . $this->mk('created_at', $p->created_at)
