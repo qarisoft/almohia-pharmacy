@@ -28,21 +28,9 @@ class SaleItemSeeder extends Seeder
 //        $table->double('cost_price')->nullable();
 //        $table->double('discount')->default(0);
 //        $table->string('customer_name')->nullable();
-        $headers = require 'database/seeders/data/sale_headers.php';
-        foreach ($headers as $header) {
-            SaleHeader::factory()->create([
-                'end_price' => $header['end_price'],
-                'profit_price' => 0,
-                'cost_price' => $header['cost_price'],
-                'discount' => $header['discount'],
-                'customer_name' => $header['customer_name'],
-                'created_at' => $header['created_at'],
-                'updated_at' => $header['updated_at'],
-            ])->items()->createMany($header['items']);
-        }
-        $a = file_exists('database/seeders/data/sale_headers2.php');
+        $a = file_exists('database/seeders/data/sale_headers0.php');
         if ($a) {
-            $headers = require 'database/seeders/data/sale_headers2.php';
+            $headers = require 'database/seeders/data/sale_headers0.php';
             foreach ($headers as $header) {
                 SaleHeader::factory()->create([
                     'end_price' => $header['end_price'],
@@ -55,6 +43,24 @@ class SaleItemSeeder extends Seeder
                 ])->items()->createMany($header['items']);
             }
         }
+        $a = file_exists('database/seeders/data/sale_headers.php');
+        if ($a) {
+            $headers = require 'database/seeders/data/sale_headers.php';
+            foreach ($headers as $header) {
+                SaleHeader::factory()->create([
+                    'end_price' => $header['end_price'],
+                    'profit_price' => 0,
+                    'cost_price' => $header['cost_price'],
+                    'discount' => $header['discount'],
+                    'customer_name' => $header['customer_name'],
+                    'created_at' => $header['created_at'],
+                    'updated_at' => $header['updated_at'],
+                ])->items()->createMany($header['items']);
+            }
+        }
+
+
+
         $returns = require 'database/seeders/data/return_headers.php';
         ReturnHeader::factory()->createMany($returns);
         $items = require 'database/seeders/data/return_items.php';

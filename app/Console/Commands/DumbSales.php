@@ -126,17 +126,7 @@ return [
         return $a1;
     }
 
-    function saleItems() : void {
-        $a0='';
-        foreach (SaleItem::all() as $p) {
-//            print($p->getUnitId());
-            $a1=$this->makeSaleItem($p);
-            $a0 = $a0 . $a1;
-        }
 
-        $this->makeFile('database/seeders/data/sale_items.php',$a0);
-//        $this->makeFile('sale_items.php',$a0);
-    }
 
     public function returnHeaders()
     {
