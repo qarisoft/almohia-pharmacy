@@ -134,8 +134,8 @@ return [
         foreach (ReturnHeader::all() as $p) {
             $a1 = '['
                 . $this->mkId('id', $p->id)
-                . $this->mkId('end_price', $p->end_price)
-                . $this->mkId('cost_price', $p->cost_price)
+                . $this->mkIdZero('end_price', $p->end_price)
+                . $this->mkIdZero('cost_price', $p->cost_price)
                 . $this->mkIdZero('discount', $p->discount)
                 . $this->mk('created_at', $p->created_at)
                 . $this->mk('updated_at', $p->updated_at)
