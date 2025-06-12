@@ -55,6 +55,7 @@ class SaleItemResource extends Resource
 
         return $table
             ->columns([
+                TextColumn::make('id'),
                 TextColumn::make('product.name_ar')->searchable(),
                 TextColumn::make('unit.name')->searchable(),
                 TextColumn::make('quantity'),
