@@ -193,6 +193,7 @@ return [
         $this->saleHeaders();
         $this->returnHeaders();
         $this->returnItems();
+        $this->withDrows();
 //        $this->saleItems();
     }
 }
