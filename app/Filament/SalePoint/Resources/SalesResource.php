@@ -133,6 +133,8 @@ class SalesResource extends Resource
 //                        })
                         ->inlineLabel()
                         ->default(0),
+                    TextInput::make('customer_name'),
+
 
                     TextInput::make('end_price')->inlineLabel()
                         ->label(__('end_price'))
@@ -148,6 +150,7 @@ class SalesResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id'),
+                Tables\Columns\TextColumn::make('customer_name'),
                 Tables\Columns\TextColumn::make('end_price')
                     ->summarize(Sum::make('Sum')),
                 Tables\Columns\TextColumn::make('profit_price')
