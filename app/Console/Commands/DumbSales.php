@@ -153,6 +153,7 @@ return [
             $a1 = '['
                 . $this->mkId('id', $p->id)
                 . $this->mkId('product_id', $p->product_id)
+                . $this->mkId('header_id', $p->header_id)
                 . $this->mkIdZero('end_price', $p->end_price)
                 . $this->mkIdZero('product_price', $p->product_price)
 //                . $this->mkIdZero('discount', $p->discount)
