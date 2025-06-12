@@ -21,7 +21,6 @@ class Product extends Model
     /** @use HasFactory<\Database\Factories\Products\ProductFactory> */
     use HasFactory, Blamable;
 
-    protected $with = ['units'];
     protected $guarded = [];
 
     static function search(string $search): array

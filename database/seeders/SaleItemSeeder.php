@@ -23,40 +23,15 @@ class SaleItemSeeder extends Seeder
      */
     public function run(): void
     {
-//        $table->double('end_price');
-//        $table->double('profit_price')->nullable();
-//        $table->double('cost_price')->nullable();
-//        $table->double('discount')->default(0);
-//        $table->string('customer_name')->nullable();
-        $a = file_exists('database/seeders/data/sale_headers0.php');
-        if ($a) {
-            $headers = require 'database/seeders/data/sale_headers0.php';
-            foreach ($headers as $header) {
-                SaleHeader::factory()->create([
-                    'end_price' => $header['end_price'],
-                    'profit_price' => 0,
-                    'cost_price' => $header['cost_price'],
-                    'discount' => $header['discount'],
-                    'customer_name' => $header['customer_name'],
-                    'created_at' => $header['created_at'],
-                    'updated_at' => $header['updated_at'],
-                ])->items()->createMany($header['items']);
-            }
+
+
+        $headers = require 'database/seeders/data/sale_headers.php';
+        if (file_exists('database/seeders/data/sale_headers.php')) {
+            SaleHeader::factory()->createMany($headers);
         }
-        $a = file_exists('database/seeders/data/sale_headers.php');
-        if ($a) {
-            $headers = require 'database/seeders/data/sale_headers.php';
-            foreach ($headers as $header) {
-                SaleHeader::factory()->create([
-                    'end_price' => $header['end_price'],
-                    'profit_price' => 0,
-                    'cost_price' => $header['cost_price'],
-                    'discount' => $header['discount'],
-                    'customer_name' => $header['customer_name'],
-                    'created_at' => $header['created_at'],
-                    'updated_at' => $header['updated_at'],
-                ])->items()->createMany($header['items']);
-            }
+        $items = require 'database/seeders/data/sale_items.php';
+        if (file_exists('database/seeders/data/sale_items.php')) {
+            SaleItem::factory()->createMany($items);
         }
 
 

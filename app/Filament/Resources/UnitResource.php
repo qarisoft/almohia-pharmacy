@@ -38,6 +38,7 @@ class UnitResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('id'),
                 TextColumn::make('name'),
                 TextColumn::make('isCost')->badge()->state(fn(MeasureUnit $record) => $record->isCost() ? "isCost" : "no"),
                 TextColumn::make('count'),

@@ -81,7 +81,7 @@ return [
 ['id'=>77,'unit_price'=>900,'barcode'=>'6223000012079','name_ar'=>'فاركونسيل ٢٥٠ منجم شراب ٨٠ مل قار کو موكسالين','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-07 08:21:13',],
 ['id'=>78,'unit_price'=>150,'barcode'=>'6221151015307','name_ar'=>'فوار سي فيتامين سي ۱۰۰۰ مل ظروف فاركو ','name_en'=>'pharco','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-08 02:33:04',],
 ['id'=>79,'unit_price'=>100,'barcode'=>'6223000011515','name_ar'=>'يوريكول فرار ١٢ كيس فاركو','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-07 08:21:13',],
-['id'=>80,'unit_price'=>600,'barcode'=>'','name_ar'=>'اسبرين مغلف ٧٥ ملجم اقراص المحضار اخوان','name_en'=>'aspirin 75mg','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-07 08:21:13',],
+['id'=>80,'unit_price'=>500,'barcode'=>'','name_ar'=>'اسبرين مغلف ٧٥ ملجم اقراص المحضار اخوان','name_en'=>'aspirin 75mg','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-12 14:18:43',],
 ['id'=>81,'unit_price'=>1000,'barcode'=>'540323725902','name_ar'=>'سيبرولون ٢٥ ملح أقراص الكتون أمير الدين','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-07 08:21:13',],
 ['id'=>82,'unit_price'=>1000,'barcode'=>'','name_ar'=>'كلين انما حقن شرجية كبار العزاني','name_en'=>'kleen ename_enma 135ml','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-07 08:21:13',],
 ['id'=>83,'unit_price'=>1400,'barcode'=>'6291109120100','name_ar'=>'بندول شراب للرضع بنكة الفراولة المنصوب','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-07 08:21:13','updated_at'=>'2025-06-07 08:21:13',],
@@ -328,7 +328,8 @@ return [
 ['id'=>332,'unit_price'=>300,'barcode'=>'','name_ar'=>'ميردكلوبريل ٧٥ ملج أمبول ماتركس ديكلوفين رومارين ديكلوجين','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-12 07:09:02','updated_at'=>'2025-06-12 07:09:47',],
 ['id'=>333,'unit_price'=>450,'barcode'=>'YE-020-155-11','name_ar'=>'بیسوبرول ۲٫٥ ملج ٣٠ قرص اليمنية المصرية بيزولول بیستول بيزوکور','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-12 07:12:58','updated_at'=>'2025-06-12 07:16:31',],
 ['id'=>334,'unit_price'=>4900,'barcode'=>'8904159495781','name_ar'=>'جاردکس ٢٥ ملج ٢٠ قرص العابد ايمباقيت','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-12 07:17:50','updated_at'=>'2025-06-12 07:23:16',],
-['id'=>335,'unit_price'=>3500,'barcode'=>'','name_ar'=>'لانبرول اقراص أشرطة سباء فارما','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-12 07:23:45','updated_at'=>'2025-06-12 07:30:01',],
+['id'=>335,'unit_price'=>50,'barcode'=>'','name_ar'=>'لانبرول اقراص أشرطة سباء فارما','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-12 07:23:45','updated_at'=>'2025-06-12 14:14:35',],
 ['id'=>336,'unit_price'=>500,'barcode'=>'','name_ar'=>'كوالاسدين','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-12 07:27:11','updated_at'=>'2025-06-12 07:28:04',],
+['id'=>337,'unit_price'=>200,'barcode'=>'','name_ar'=>'اسبرين 75 ملج سباء','name_en'=>'','scientific_name'=>'','company_id'=>null,'created_at'=>'2025-06-12 14:19:43','updated_at'=>'2025-06-12 14:19:43',],
 
 ];

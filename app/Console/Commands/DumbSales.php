@@ -82,17 +82,40 @@ return [
         foreach (SaleHeader::all() as $p) {
 
             $a1 = '['
+                . $this->mkId('id', $p->id)
                 . $this->mkId('end_price', $p->end_price)
                 . $this->mkId('cost_price', $p->cost_price)
                 . $this->mkIdZero('discount', $p->discount)
                 . $this->mk('customer_name', $p->customer_name)
                 . $this->mk('created_at', $p->created_at)
                 . $this->mk('updated_at', $p->updated_at)
-                    ."'"."items"."'"."=>".$this->makeSaleItems($p)
                 . $this->_close();
             $a0 = $a0 . $a1;
         }
-        $this->makeFile('database/seeders/data/sale_headers.php',$a0);
+        $this->makeFile('database/seeders/data/sales/sale_headers.php',$a0);
+    }
+    function saleItems() : void {
+        $a0='';
+        foreach (SaleItem::all() as $p) {
+            $a1 = '['
+                . $this->mkId('id', $p->id)
+                . $this->mkId('product_id', $p->product_id)
+                . $this->mkId('header_id', $p->header_id)
+                . $this->mkId('quantity', $p->quantity)
+                . $this->mkId('end_price', $p->end_price)
+                . $this->mkId('cost_price', $p->cost_price)
+                . $this->mkId('unit_cost_price', $p->unit_cost_price)
+                . $this->mkId('product_price', $p->product_price)
+                . $this->mkIdZero('discount', $p->discount)
+                . $this->mkIdZero('unit_id', $p->unit_id)
+                . $this->mkIdZero('unit_count', $p->unit_count)
+                . $this->mk('profit', $p->profit)
+                . $this->mk('created_at', $p->created_at)
+                . $this->mk('updated_at', $p->updated_at)
+                . $this->_close();
+            $a0 = $a0 . $a1;
+        }
+        $this->makeFile('database/seeders/data/sales/sale_items.php',$a0);
     }
 
     public function makeSaleItems(SaleHeader $p) : string
@@ -142,7 +165,7 @@ return [
                 . $this->_close();
             $a0 = $a0 . $a1;
         }
-        $this->makeFile('database/seeders/data/return_headers.php',$a0);
+        $this->makeFile('database/seeders/data/sales/return_headers.php',$a0);
 
     }
     public function returnItems()
@@ -164,15 +187,12 @@ return [
                 . $this->_close();
             $a0 = $a0 . $a1;
         }
-        $this->makeFile('database/seeders/data/return_items.php',$a0);
+        $this->makeFile('database/seeders/data/sales/return_items.php',$a0);
     }
 
     public function withDrows()
     {
-//        $table->id();
-//        $table->string('note');
-//        $table->double('amount');
-//        $table->foreignId('created_by')->nullable();
+
         $a0='';
         foreach (WithDraw::all() as $p) {
 
@@ -186,7 +206,7 @@ return [
                 . $this->_close();
             $a0 = $a0 . $a1;
         }
-        $this->makeFile('database/seeders/data/with_draws.php',$a0);
+        $this->makeFile('database/seeders/data/sales/with_draws.php',$a0);
     }
 
     public function handle()

@@ -29,5 +29,7 @@ database/seeders/data/sale_headers.php
 database/seeders/data/return_headers.php
 database/seeders/data/return_items.php
 database/seeders/data/with_draws.php
-database/db5.sqlite
-database/db6.sqlite
+database/dbs/db5.sqlite
+database/dbs/db6.sqlite
+database/dbs/db7.sqlite
+database/dbs

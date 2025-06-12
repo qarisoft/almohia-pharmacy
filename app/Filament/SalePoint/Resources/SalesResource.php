@@ -92,21 +92,19 @@ class SalesResource extends Resource
                         TextInput::make('quantity')
                             ->label(__('quantity'))
                             ->numeric()
-                            ->live(debounce: 600)
+                            ->live(onBlur: true)
                             ->required()
                             ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
                                 $set('end_price', intval((MeasureUnit::getSellPrice($get('unit_id'),$state)) ));
-                                $set('cost_price', intval((MeasureUnit::getCostPrice($get('unit_id'),$state)) ));
+//                                $set('cost_price', intval((MeasureUnit::getCostPrice($get('unit_id'),$state)) ));
                             })
                             ->required()
                             ->default(0)
                             ->columns(1),
 
-//                        TextInput::make('discount')
-//                            ->label(__('discount'))
-//                            ->numeric()
-//                            ->default(0),
+
                         TextInput::make('end_price')
+
                             ->label(__('price'))
                             ->numeric()
                             ->default(0),
@@ -167,7 +165,7 @@ class SalesResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('customer_name'),
-                Tables\Columns\TextColumn::make('end_price')
+                Tables\Columns\TextColumn::make('end_price')->searchable()
                     ->summarize(Sum::make('Sum')),
                 Tables\Columns\TextColumn::make('profit_price')
                     ->hidden(fn()=>! auth()->user()->is_admin)

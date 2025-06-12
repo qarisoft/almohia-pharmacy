@@ -91,6 +91,7 @@ class ProductInputResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('id'),
                 TextColumn::make('product.name_ar')->label(__('product'))->searchable(),
                 TextColumn::make('unit_cost_price')->label(__('unit_cost_price')),
                 TextColumn::make('quantity')->label(__('quantity')),

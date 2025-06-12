@@ -461,7 +461,11 @@ return [
 ['id'=>465,'name'=>'باكت','product_id'=>333,'discount'=>0,'sell_price'=>0,'cost_price'=>0,'count'=>3,'created_at'=>'2025-06-12 07:15:32','updated_at'=>'2025-06-12 07:15:32',],
 ['id'=>466,'name'=>'شريط','product_id'=>334,'discount'=>0,'sell_price'=>0,'cost_price'=>0,'count'=>1,'created_at'=>'2025-06-12 07:19:18','updated_at'=>'2025-06-12 07:19:18',],
 ['id'=>467,'name'=>'باكت','product_id'=>334,'discount'=>0,'sell_price'=>0,'cost_price'=>0,'count'=>2,'created_at'=>'2025-06-12 07:23:21','updated_at'=>'2025-06-12 07:23:21',],
-['id'=>468,'name'=>'باكت','product_id'=>335,'discount'=>0,'sell_price'=>0,'cost_price'=>0,'count'=>1,'created_at'=>'2025-06-12 07:24:18','updated_at'=>'2025-06-12 07:30:19',],
+['id'=>468,'name'=>'باكت','product_id'=>335,'discount'=>0,'sell_price'=>0,'cost_price'=>0,'count'=>100,'created_at'=>'2025-06-12 07:24:18','updated_at'=>'2025-06-12 14:14:40',],
 ['id'=>469,'name'=>'باكت','product_id'=>336,'discount'=>0,'sell_price'=>0,'cost_price'=>0,'count'=>1,'created_at'=>'2025-06-12 07:27:59','updated_at'=>'2025-06-12 07:27:59',],
+['id'=>470,'name'=>'حبة','product_id'=>335,'discount'=>0,'sell_price'=>0,'cost_price'=>0,'count'=>1,'created_at'=>'2025-06-12 14:14:29','updated_at'=>'2025-06-12 14:14:29',],
+['id'=>471,'name'=>'شريط','product_id'=>335,'discount'=>0,'sell_price'=>0,'cost_price'=>0,'count'=>10,'created_at'=>'2025-06-12 14:14:50','updated_at'=>'2025-06-12 14:14:50',],
+['id'=>472,'name'=>'شريط','product_id'=>337,'discount'=>0,'sell_price'=>0,'cost_price'=>0,'count'=>1,'created_at'=>'2025-06-12 14:19:52','updated_at'=>'2025-06-12 14:19:52',],
+['id'=>473,'name'=>'باكت','product_id'=>337,'discount'=>0,'sell_price'=>0,'cost_price'=>0,'count'=>4,'created_at'=>'2025-06-12 14:20:03','updated_at'=>'2025-06-12 14:20:03',],
 
 ];
