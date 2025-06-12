@@ -26,3 +26,5 @@ Thumbs.db
 yarn-error.log
 app/Console/Commands/DumbData.php
 database/seeders/data/sale_headers.php
+database/seeders/data/return_headers.php
+database/seeders/data/return_items.php
