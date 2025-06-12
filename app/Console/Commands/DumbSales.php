@@ -216,6 +216,6 @@ return [
         $this->returnHeaders();
         $this->returnItems();
         $this->withDrows();
-//        $this->saleItems();
+        $this->saleItems();
     }
 }
