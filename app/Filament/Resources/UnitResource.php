@@ -6,9 +6,11 @@ use App\Filament\Resources\UnitResource\Pages;
 
 //use App\Filament\Resources\UnitResource\RelationManagers;
 use App\Models\Products\MeasureUnit;
+use App\Models\Products\MeasureUnitName;
 use App\Models\Store\ProductInput;
 use App\Models\Store\ProductInputHeader;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -30,7 +32,7 @@ class UnitResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Select::make('name')->options(MeasureUnitName::query()->pluck('name', 'name')->toArray())
             ]);
     }
 
@@ -39,7 +41,7 @@ class UnitResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id'),
-                TextColumn::make('name'),
+                TextColumn::make('name')->searchable(),
                 TextColumn::make('isCost')->badge()->state(fn(MeasureUnit $record) => $record->isCost() ? "isCost" : "no"),
                 TextColumn::make('count'),
                 TextColumn::make('product.lastStoreItem.header.bill_number'),

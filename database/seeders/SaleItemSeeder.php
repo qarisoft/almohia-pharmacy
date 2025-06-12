@@ -26,7 +26,7 @@ class SaleItemSeeder extends Seeder
 
 
         $headers = require 'database/seeders/data/sales/sale_headers.php';
-        if (file_exists('database/seeders/sales/data/sale_headers.php')) {
+        if (file_exists('database/seeders/data/sales/sale_headers.php')) {
             SaleHeader::factory()->createMany($headers);
         }
         $items = require 'database/seeders/data/sales/sale_items.php';

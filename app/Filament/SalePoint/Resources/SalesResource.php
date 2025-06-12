@@ -66,14 +66,17 @@ class SalesResource extends Resource
                             ->options(fn() => Product::query()->where('unit_price', '>', 0)->pluck('name_ar', 'id'))
                             ->live()
                             ->afterStateUpdated(function (Set $set, Get $get, ?string $state) {
-                                $set('unit_id', Product::query()->find($state)?->units()->first()?->id);
+                                $p=Product::query()->find($state);
+                                $set('unit_id', $p?->units()->first()?->id);
                                 $set('end_price', null);
+                                $set('instore', $p->inStore());
                             })
                             ->required()
                             ->autofocus(fn($operation) => $operation == 'create')
                             ->searchable()
                             ->columnSpan(3)
                             ->getSearchResultsUsing(fn($search) => Product::search($search)),
+//                        TextInput::make('instore')->disabled()->readOnly(),
 
                         Select::make('unit_id')
                             ->label(__('unit'))
@@ -132,7 +135,7 @@ class SalesResource extends Resource
                         })
                         ->inlineLabel()
                         ->default(0),
-                        TextInput::make('additions')
+                        TextInput::make('addition')
                             ->label(__('addition'))
                             ->numeric()
                             ->live(onBlur: true)
@@ -171,7 +174,7 @@ class SalesResource extends Resource
                     ->hidden(fn()=>! auth()->user()->is_admin)
                     ->summarize(Tables\Columns\Summarizers\Sum::make('Sum')),
 //                Tables\Columns\TextColumn::make('pf')->state(fn($record)=>$record->items()->sum('profit')),
-                Tables\Columns\TextColumn::make('created_at'),
+                Tables\Columns\TextColumn::make('created_at')->dateTime()->since(),
                 Tables\Columns\TextColumn::make('updated_at'),
             ])
             ->defaultSort('id', 'desc')
