@@ -25,25 +25,25 @@ class SaleItemSeeder extends Seeder
     {
 
 
-        $headers = require 'database/seeders/data/sale_headers.php';
-        if (file_exists('database/seeders/data/sale_headers.php')) {
+        $headers = require 'database/seeders/data/sales/sale_headers.php';
+        if (file_exists('database/seeders/sales/data/sale_headers.php')) {
             SaleHeader::factory()->createMany($headers);
         }
-        $items = require 'database/seeders/data/sale_items.php';
-        if (file_exists('database/seeders/data/sale_items.php')) {
+        $items = require 'database/seeders/data/sales/sale_items.php';
+        if (file_exists('database/seeders/data/sales/sale_items.php')) {
             SaleItem::factory()->createMany($items);
         }
 
 
 
-        $returns = require 'database/seeders/data/return_headers.php';
+        $returns = require 'database/seeders/data/sales/return_headers.php';
         ReturnHeader::factory()->createMany($returns);
-        $items = require 'database/seeders/data/return_items.php';
+        $items = require 'database/seeders/data/sales/return_items.php';
         ReturnItem::factory()->createMany($items);
 
-        if (file_exists('database/seeders/data/with_draws.php')) {
+        if (file_exists('database/seeders/data/sales/with_draws.php')) {
 
-            $with_draws = require 'database/seeders/data/with_draws.php';
+            $with_draws = require 'database/seeders/data/sales/with_draws.php';
             WithDraw::factory()->createMany($with_draws);
         }
 
