@@ -11,7 +11,7 @@ return new class extends Migration
     {
         Schema::create('sale_item_pluses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('header_id')->constrained('headers')->cascadeOnDelete();
+            $table->foreignId('header_id')->constrained('sale_headers')->cascadeOnDelete();
             $table->double('price')->default(0);
             $table->string('note')->nullable();
             $table->timestamps();
