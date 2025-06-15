@@ -43,18 +43,18 @@ class ProductInput extends Model
         return $this->belongsTo(MeasureUnit::class, 'unit_id');
     }
 
-    protected static function booted(): void
-    {
-        static::updated(function ($input) {
-            $input->header->updateTotalPrice();
-        });
-        static::created(function ($input) {
-            $input->header->updateTotalPrice();
-        });
-        static::saving(function ($header) {
-            $header->total_cost_price = $header->unit_cost_price * $header->quantity;
-        });
-    }
+//    protected static function booted(): void
+//    {
+//        static::updated(function ($input) {
+//            $input->header->updateTotalPrice();
+//        });
+//        static::created(function ($input) {
+//            $input->header->updateTotalPrice();
+//        });
+//        static::saving(function ($header) {
+//            $header->total_cost_price = $header->unit_cost_price * $header->quantity;
+//        });
+//    }
 
 
 }

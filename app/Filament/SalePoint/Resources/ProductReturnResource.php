@@ -92,6 +92,11 @@ class ProductReturnResource extends Resource
                             ->label(__('price'))
                             ->numeric()
                             ->default(0),
+                            TextInput::make('cost_price')
+                            ->label(__('price'))
+                            ->numeric()
+                            ->visible(false)
+                            ->default(0),
 
                     ])->columns(8)
                     ->columnSpanFull(),
