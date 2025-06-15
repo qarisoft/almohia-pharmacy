@@ -124,6 +124,13 @@ class ProductReturnResource extends Resource
                         ->numeric()
                         ->readOnly()
                         ->default(0),
+                    TextInput::make('cost_price')
+                        ->inlineLabel()
+                        ->visible(false)
+                        ->label(__(''))
+                        ->numeric()
+                        ->readOnly()
+                        ->default(0),
                 ])->columnSpan(1)
             ]);
     }
